@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>शहडोल जिला | Official District Portal</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6f8;
+  color: #202124;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.top {
+  background: #873e00;
+  color: white;
+  padding: 7px 5%;
+  text-align: right;
+  font-size: 13px;
+}
+
+.logo {
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  background: #8c4b00;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+}
+
+.logo h2 {
+  color: #753b00;
+}
+
+.logo small {
+  color: #666;
+}
+
+nav {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #222;
+  text-decoration: none;
+  padding: 14px 13px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+  color: #9b5b00;
+  background: #fff7e9;
+  border-bottom-color: #a66a00;
+}
+
+.menu-btn {
+  display: none;
+  margin-left: auto;
+  border: none;
+  background: white;
+  font-size: 27px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 340px;
+  background:
+  linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.1)),
+  url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=85");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 45px 9%;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 650px;
+}
+
+.hero button {
+  margin-top: 22px;
+  padding: 12px 24px;
+  border: none;
+  background: #a46500;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 35px 22px;
+}
+
+.page {
+  display: none;
+  min-height: 65vh;
+}
+
+.page.active {
+  display: block;
+  animation: show .3s ease;
+}
+
+@keyframes show {
+  from {opacity:0;transform:translateY(8px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+.page-title {
+  color: #713900;
+  border-left: 5px solid #a66a00;
+  padding-left: 13px;
+  margin-bottom: 25px;
+  font-size: 29px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.stat {
+  background: white;
+  padding: 22px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 9px #00000010;
+}
+
+.stat h2 {
+  color: #a15c00;
+  font-size: 28px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px #00000012;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #e8e8e8;
+}
+
+.card-content {
+  padding: 18px;
+}
+
+.card h3 {
+  color: #854900;
+  margin-bottom: 9px;
+}
+
+.card a {
+  color: #a15c00;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.info-box {
+  background: white;
+  padding: 22px;
+  border-radius: 8px;
+  margin: 18px 0;
+  box-shadow: 0 2px 8px #00000010;
+}
+
+.info-box h3 {
+  color: #874800;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  padding: 13px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #8b4a00;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background: #fff8ee;
+}
+
+.search {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px 0 25px;
+  font-size: 16px;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.quick-links button {
+  padding: 20px 10px;
+  border: 1px solid #ddd;
+  background: white;
+  color: #713900;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quick-links button:hover {
+  background: #fff0d8;
+}
+
+.gallery img {
+  height: 180px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+form button {
+  background: #8c4a00;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer {
+  background: #252525;
+  color: white;
+  padding: 35px 7%;
+  margin-top: 35px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+
+footer h3 {
+  color: #ffca73;
+  margin-bottom: 12px;
+}
+
+footer a {
+  color: white;
+  display: block;
+  text-decoration: none;
+  margin: 7px 0;
+}
+
+footer a:hover {
+  color: #ffca73;
+}
+
+.copyright {
+  border-top: 1px solid #555;
+  margin-top: 25px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media(max-width:800px) {
+  .menu-btn {display:block}
+  nav {
+    display:none;
+    flex-direction:column;
+    align-items:stretch;
+  }
+  nav.show {display:flex}
+  nav a {padding:12px 20px}
+  .cards {grid-template-columns:repeat(2,1fr)}
+  .stats {grid-template-columns:repeat(2,1fr)}
+  .quick-links {grid-template-columns:repeat(2,1fr)}
+  .hero h1 {font-size:30px}
+}
+
+@media(max-width:520px) {
+  .cards,.footer-grid {grid-template-columns:1fr}
+  .hero {min-height:280px;padding:30px 6%}
+  .hero h1 {font-size:27px}
+  .page-title {font-size:24px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="top">
+    मध्य प्रदेश शासन | Government of Madhya Pradesh
+  </div>
+
+  <div class="logo">
+    <div class="logo-icon">🏛️</div>
+    <div>
+      <h2>जिला शहडोल</h2>
+      <small>मध्य प्रदेश शासन | District Shahdol</small>
+    </div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+
+  <nav id="navbar">
+    <a class="active" onclick="showPage('home',this)">Home</a>
+    <a onclick="showPage('about',this)">About District</a>
+    <a onclick="showPage('tourism',this)">Tourism</a>
+    <a onclick="showPage('directory',this)">Directory</a>
+    <a onclick="showPage('departments',this)">Departments</a>
+    <a onclick="showPage('education',this)">Education</a>
+    <a onclick="showPage('health',this)">Hospitals</a>
+    <a onclick="showPage('villages',this)">Villages</a>
+    <a onclick="showPage('gallery',this)">Gallery</a>
+    <a onclick="showPage('contact',this)">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME PAGE -->
+<section id="home" class="page active">
+
+  <div class="hero">
+    <div>
+      <h1>Welcome to Shahdol</h1>
+      <p>
+        शहडोल जिले की संस्कृति, इतिहास, पर्यटन,
+        शिक्षा और सरकारी सेवाओं की जानकारी
+        एक ही वेबसाइट पर।
+      </p>
+      <button onclick="showPage('about')">Explore District →</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="page-title">District at a Glance</h2>
+
+    <div class="stats">
+      <div class="stat">
+        <h2>5,610</h2>
+        <p>क्षेत्रफल (वर्ग किमी)</p>
+      </div>
+      <div class="stat">
+        <h2>10,66,063</h2>
+        <p>जनसंख्या (जनगणना आंकड़ा)</p>
+      </div>
+      <div class="stat">
+        <h2>886</h2>
+        <p>ग्राम</p>
+      </div>
+      <div class="stat">
+        <h2>MP</h2>
+        <p>मध्य प्रदेश</p>
+      </div>
+    </div>
+
+    <h2 class="page-title">Explore Shahdol</h2>
+
+    <div class="quick-links">
+      <button onclick="showPage('about')">🏛️ जिला परिचय</button>
+      <button onclick="showPage('tourism')">🏞️ पर्यटन स्थल</button>
+      <button onclick="showPage('education')">📚 शिक्षा</button>
+      <button onclick="showPage('health')">🏥 स्वास्थ्य</button>
+    </div>
+
+    <div class="info-box">
+      <h3>शहडोल के बारे में</h3>
+      <p>
+        शहडोल मध्य प्रदेश के उत्तर-पूर्वी भाग में
+        स्थित एक महत्वपूर्ण जिला है। यह अपने
+        ऐतिहासिक मंदिरों, प्राकृतिक सुंदरता,
+        जंगलों और सांस्कृतिक विरासत के लिए जाना जाता है।
+      </p>
+      <a href="https://shahdol.nic.in/" target="_blank">
+        सरकारी वेबसाइट देखें →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about" class="page">
+  <div class="container">
+    <h1 class="page-title">About District</h1>
+
+    <p>
+      शहडोल जिला मध्य प्रदेश के उत्तर-पूर्वी हिस्से
+      में स्थित है। 15 अगस्त 2003 को जिले के
+      विभाजन के बाद इसका प्रशासनिक क्षेत्र निर्धारित हुआ।
+    </p>
+
+    <p>
+      यह क्षेत्र पहाड़ियों, साल और मिश्रित वनों,
+      पठारों तथा सोन नदी की घाटी के लिए जाना जाता है।
+    </p>
+
+    <div class="info-box">
+      <h3>भौगोलिक जानकारी</h3>
+      <p><b>राज्य:</b> मध्य प्रदेश</p>
+      <p><b>जिला मुख्यालय:</b> शहडोल</p>
+      <p><b>दिशा:</b> उत्तर-पूर्वी मध्य प्रदेश</p>
+      <p><b>प्रमुख नदी:</b> सोन नदी</p>
+      <p><b>प्रमुख पर्वतीय क्षेत्र:</b> मैकल पर्वतमाला</p>
+    </div>
+
+    <div class="info-box">
+      <h3>जिले का इतिहास</h3>
+      <p>
+        शहडोल का नाम इसके मुख्यालय शहर शहडोल
+        के नाम पर पड़ा है। इस क्षेत्र में ऐतिहासिक
+        मंदिर और पुरातात्विक महत्व के स्थल मौजूद हैं।
+      </p>
+    </div>
+
+    <div class="info-box">
+      <h3>भौगोलिक विभाग</h3>
+      <ol>
+        <li>मैकल पर्वतमाला</li>
+        <li>पूर्वी पठार की पहाड़ियाँ</li>
+        <li>ऊपरी सोन घाटी</li>
+      </ol>
+    </div>
+
+    <a href="https://shahdol.nic.in/en/about-district/" target="_blank">
+      अधिक आधिकारिक जानकारी →
+    </a>
+  </div>
+</section>
+
+<!-- TOURISM PAGE -->
+<section id="tourism" class="page">
+  <div class="container">
+    <h1 class="page-title">Tourist Places</h1>
+    <p>शहडोल जिले के प्रमुख पर्यटन स्थलों की जानकारी।</p>
+
+    <input class="search" id="placeSearch"
+      placeholder="🔍 पर्यटन स्थल खोजें..."
+      oninput="searchPlaces()">
+
+    <div class="cards" id="placeCards">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=700&q=80" alt="विराट मंदिर">
+        <div class="card-content">
+          <h3>विराटेश्वर मंदिर</h3>
+          <p>सोहागपुर, बाणगंगा में स्थित ऐतिहासिक शिव मंदिर।</p>
+          <a href="https://shahdol.nic.in/en/places-of-interest/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="सरसी आइलैंड">
+        <div class="card-content">
+          <h3>सरसी आइलैंड</h3>
+          <p>प्राकृतिक सुंदरता और शांत वातावरण वाला पर्यटन स्थल।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="क्षीरसागर">
+        <div class="card-content">
+          <h3>क्षीरसागर</h3>
+          <p>शहडोल से लगभग 22 किलोमीटर दूर प्राकृतिक स्थल।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80" alt="पचमठा मंदिर">
+        <div class="card-content">
+          <h3>पचमठा मंदिर</h3>
+          <p>सिंहपुर गांव का प्रसिद्ध देवी मंदिर।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=700&q=80" alt="लखबरिया गुफाएं">
+        <div class="card-content">
+          <h3>लखबरिया गुफाएं</h3>
+          <p>शहडोल क्षेत्र की ऐतिहासिक गुफाएं।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=700&q=80" alt="भठिया देवी">
+        <div class="card-content">
+          <h3>भठिया देवी मंदिर</h3>
+          <p>मां सिंहवाहिनी देवी का प्रसिद्ध मंदिर।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80" alt="बाणसागर डैम">
+        <div class="card-content">
+          <h3>बाणसागर डैम</h3>
+          <p>सोन नदी पर बना महत्वपूर्ण बहुउद्देशीय बांध।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1609607847926-da4702f01fef?auto=format&fit=crop&w=700&q=80" alt="बूढ़ी देवी">
+        <div class="card-content">
+          <h3>बूढ़ी देवी मंदिर</h3>
+          <p>शहडोल और उमरिया सीमा के पास स्थित मंदिर।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1604881988758-f76ad2f7aac1?auto=format&fit=crop&w=700&q=80" alt="कंकाली मंदिर">
+        <div class="card-content">
+          <h3>कंकाली मंदिर</h3>
+          <p>अंतरा गांव में स्थित धार्मिक स्थल।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=700&q=80" alt="घाटी डोंगरी">
+        <div class="card-content">
+          <h3>घाटी डोंगरी</h3>
+          <p>वनचाचर गांव के अंतर्गत प्राकृतिक और ऐतिहासिक क्षेत्र।</p>
+          <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">और जानें →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORY PAGE -->
+<section id="directory" class="page">
+  <div class="container">
+    <h1 class="page-title">District Directory</h1>
+
+    <div class="info-box">
+      <h3>जिला प्रशासन</h3>
+      <p>कलेक्टर कार्यालय, शहडोल</p>
+      <p>जिला मुख्यालय, मध्य प्रदेश - 484001</p>
+      <a href="https://shahdol.nic.in/en/whos-who/" target="_blank">
+        अधिकारियों की आधिकारिक सूची →
+      </a>
+    </div>
+
+    <div class="info-box">
+      <h3>सार्वजनिक उपयोगिताएं</h3>
+      <ul>
+        <li>बैंक</li>
+        <li>अस्पताल</li>
+        <li>कॉलेज और विश्वविद्यालय</li>
+        <li>बिजली विभाग</li>
+        <li>डाकघर</li>
+        <li>पुलिस कार्यालय</li>
+      </ul>
+      <a href="https://shahdol.nic.in/en/directory/" target="_blank">
+        पूरी डायरेक्टरी देखें →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS PAGE -->
+<section id="departments" class="page">
+  <div class="container">
+    <h1 class="page-title">Government Departments</h1>
+
+    <div class="cards">
+      <div class="info-box"><h3>🏥 स्वास्थ्य विभाग</h3><p>स्वास्थ्य सेवाएं और चिकित्सा सुविधाएं।</p></div>
+      <div class="info-box"><h3>📚 शिक्षा विभाग</h3><p>स्कूल और शिक्षा से संबंधित सेवाएं।</p></div>
+      <div class="info-box"><h3>🐄 पशुपालन विभाग</h3><p>पशुओं की देखभाल और संबंधित सेवाएं।</p></div>
+      <div class="info-box"><h3>🧵 हस्तशिल्प विभाग</h3><p>स्थानीय कला और हस्तशिल्प।</p></div>
+      <div class="info-box"><h3>💼 रोजगार विभाग</h3><p>रोजगार संबंधी जानकारी और सेवाएं।</p></div>
+      <div class="info-box"><h3>🏢 राजस्व विभाग</h3><p>भूमि और राजस्व संबंधी सेवाएं।</p></div>
+    </div>
+
+    <div class="info-box">
+      <a href="https://shahdol.nic.in/en/department/" target="_blank">
+        सभी सरकारी विभाग देखें →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION PAGE -->
+<section id="education" class="page">
+  <div class="container">
+    <h1 class="page-title">Education</h1>
+
+    <div class="info-box">
+      <h3>शिक्षा की जानकारी</h3>
+      <p>शहडोल जिले में स्कूल, कॉलेज और अन्य शिक्षण संस्थान हैं।</p>
+      <p>स्कूलों और कॉलेजों की सत्यापित सूची के लिए सरकारी डायरेक्टरी देखें।</p>
+      <a href="https://shahdol.nic.in/en/directory/" target="_blank">
+        शिक्षा संस्थानों की डायरेक्टरी →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH PAGE -->
+<section id="health" class="page">
+  <div class="container">
+    <h1 class="page-title">Health & Hospitals</h1>
+
+    <div class="info-box">
+      <h3>बिरसा मुंडा सरकारी मेडिकल कॉलेज और अस्पताल</h3>
+      <p>शहडोल में स्थित प्रमुख सरकारी चिकित्सा संस्थान।</p>
+      <a href="https://shahdol.nic.in/" target="_blank">
+        जिला पोर्टल देखें →
+      </a>
+    </div>
+
+    <div class="info-box">
+      <h3>महत्वपूर्ण हेल्पलाइन</h3>
+      <table>
+        <tr><th>सेवा</th><th>नंबर</th></tr>
+        <tr><td>एम्बुलेंस</td><td>108</td></tr>
+        <tr><td>पुलिस</td><td>100</td></tr>
+        <tr><td>महिला हेल्पलाइन</td><td>1091</td></tr>
+        <tr><td>चाइल्ड हेल्पलाइन</td><td>1098</td></tr>
+        <tr><td>CM हेल्पलाइन</td><td>181</td></tr>
+      </table>
+      <p>नंबरों की वर्तमान स्थिति आधिकारिक स्रोत से जांच लें।</p>
+    </div>
+  </div>
+</section>
+
+<!-- VILLAGES PAGE -->
+<section id="villages" class="page">
+  <div class="container">
+    <h1 class="page-title">Villages, Blocks & Tehsils</h1>
+
+    <div class="info-box">
+      <h3>गांवों की जानकारी</h3>
+      <p>
+        जिले के गांव, ग्राम पंचायत, तहसील और
+        विकासखंड की आधिकारिक सूची यहां उपलब्ध कराई जाएगी।
+      </p>
+      <a href="https://shahdol.nic.in/en/" target="_blank">
+        आधिकारिक जिला पोर्टल →
+      </a>
+    </div>
+
+    <div class="info-box">
+      <h3>जिला मानचित्र</h3>
+      <p>शहडोल जिले का प्रशासनिक नक्शा देखने के लिए:</p>
+      <a href="https://shahdol.nic.in/en/map-of-district/" target="_blank">
+        District Map देखें →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PAGE -->
+<section id="gallery" class="page">
+  <div class="container">
+    <h1 class="page-title">Photo Gallery</h1>
+    <p>शहडोल और इसके आसपास के पर्यटन क्षेत्रों की तस्वीरें।</p>
+
+    <div class="cards gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80" alt="मंदिर">
+        <div class="card-content"><h3>मंदिर</h3></div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=700&q=80" alt="प्राकृतिक दृश्य">
+        <div class="card-content"><h3>प्राकृतिक दृश्य</h3></div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=700&q=80" alt="पहाड़">
+        <div class="card-content"><h3>पहाड़ और घाटियां</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT PAGE -->
+<section id="contact" class="page">
+  <div class="container">
+    <h1 class="page-title">Contact Us</h1>
+
+    <div class="info-box">
+      <h3>जिला कलेक्ट्रेट कार्यालय</h3>
+      <p>Collectorate Office, Near Jai Stambh</p>
+      <p>Shahdol, Madhya Pradesh - 484001</p>
+      <p>वेबसाइट: <a href="https://shahdol.nic.in/en/contact-us/" target="_blank">आधिकारिक संपर्क पेज</a></p>
+    </div>
+
+    <div class="info-box">
+      <h3>Send a Message</h3>
+      <form onsubmit="sendMessage(event)">
+        <input type="text" id="name" placeholder="आपका नाम" required>
+        <input type="email" id="email" placeholder="ईमेल" required>
+        <textarea id="message" rows="5" placeholder="अपना संदेश लिखें..." required></textarea>
+        <button type="submit">Submit Message</button>
+      </form>
+      <p id="formStatus"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>District Shahdol</h3>
+      <p>मध्य प्रदेश शासन</p>
+      <p>शहडोल जिले की जानकारी एक ही स्थान पर।</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="https://shahdol.nic.in/" target="_blank">Official Website</a>
+      <a href="https://shahdol.nic.in/en/tourist-places/" target="_blank">Tourism</a>
+      <a href="https://shahdol.nic.in/en/directory/" target="_blank">Directory</a>
+    </div>
+    <div>
+      <h3>Important Information</h3>
+      <a onclick="showPage('about')">About District</a>
+      <a onclick="showPage('departments')">Departments</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © 2026 District Information Portal | Educational Demo Website
+    <br>यह एक स्वतंत्र डेमो वेबसाइट है, आधिकारिक सरकारी पोर्टल नहीं।
+  </div>
+</footer>
+
+<script>
+function showPage(pageId, element) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  const selected = document.getElementById(pageId);
+  if (selected) selected.classList.add('active');
+
+  document.querySelectorAll('nav a').forEach(link => {
+    link.classList.remove('active');
+  });
+
+  if (element) element.classList.add('active');
+
+  document.getElementById('navbar').classList.remove('show');
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function toggleMenu() {
+  document.getElementById('navbar').classList.toggle('show');
+}
+
+function searchPlaces() {
+  const query = document.getElementById('placeSearch')
+    .value.toLowerCase();
+
+  document.querySelectorAll('#placeCards .card').forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? '' : 'none';
+  });
+}
+
+function sendMessage(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  const subject = encodeURIComponent('Website Contact Message');
+  const body = encodeURIComponent(
+    'Name: ' + name +
+    '\nEmail: ' + email +
+    '\nMessage: ' + message
+  );
+
+  document.getElementById('formStatus').innerText =
+    'आपका ईमेल ऐप खुल रहा है। भेजने से पहले जानकारी जांच लें।';
+
+  window.location.href =
+    'mailto:dmshahdol@nic.in?subject=' + subject +
+    '&body=' + body;
+}
+</script>
+
+</body>
+</html>
